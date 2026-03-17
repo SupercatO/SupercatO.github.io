@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'PressStart2P';
+    src: url('fonts/PressStart2P.ttf')
+}
+
+a{
+    text-decoration: none;
+    color: #b8dbf4;
+}
+
+header ul, footer {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0 8px;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 20px;
+    list-style: none;
+    gap: 20px;
+}
+
+header{
+    margin-bottom: 20px;
+    font-family: 'PressStart2P',fantasy;
+}
+
+.contact{
+    max-width: 600px;
+    margin: 80px auto ;
+    padding: 0 20px;
+    text-align: center;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 15px;
+}
+
+.form-container{
+    max-width: 600px;
+    margin: 500px,auto;
+    background-color: #d9edfd;
+    border-radius: 16px;
+    margin: 30px auto;
+    padding:30px 30px;
+}
+
+form input, form textarea {
+    padding: 12px;
+    width: 100%;
+    max-width: 200px;
+    box-sizing: border-box;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+input[type="submit"]:hover {
+    box-shadow: 0 1px 1px 1px rgb(156, 183, 207);
+    cursor: pointer;
+}
+
+.back{
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px;
+}
+
+h3{
+    margin-top: 10px;
+     text-align: center;
+}
+
+body {
+    background-color: hsl(0, 0%, 98%);
+    background-image: radial-gradient(#dfe8ed 2px, transparent 2px);
+    background-size: 32px 32px;
+    color: rgb(44, 44, 44);
+}
+
+h1{
+    text-align: center;
+}
+
+.wall {
+    display: flex;
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.masonry {
+    column-count: 3;
+    gap: 70px;
+}
+
+.note {
+    break-inside: avoid;
+    margin-bottom: 32px;
+    display: block;
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    padding: 32px 28px;
+    background-size: 100% ;
+    background-repeat: no-repeat;
+    font-family: serif;
+    line-height: 1.9;
+    box-shadow: 0 5px 11px rgba(0, 0, 0, 0.12);
+}
+
+
+.skin-1 {
+    background-image: url("Img/note1.jpg");
+    background-size: 100% 100%;
+
+}
+
+.skin-2 {
+    background-image: url("Img/note3.jpg");
+    background-color: rgb(245, 245, 245);
+}
+
+.skin-3 {
+    background-image: url("Img/note2.jpg");
+    background-size: 100% 100%;
+}
+
+.skin-4 {
+    background-image: url("Img/note4.jpg");
+}
+
+.skin-5 {
+    background-image: url("Img/note5.jpg");
+    background-color: white;
+}
+
+.skin-6 {
+    background-image: url("Img/note6.jpg");
+}
+
+footer {
+    font-size:12px;
+}

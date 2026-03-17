@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>My Web</title>
+</head>
+
+<body>
+<nav class="logo-glass-container">
+    <div class="nav-trigger-zone">
+        <div class="logo-glass-element">
+            <img src="Img/LOGO.png" alt="Logo" class="logo-image">
+        </div>
+
+        <div class="nav-links">
+            <a href="#scene1" class="nav-item">HOME</a>
+            <a href="blog.html" class="nav-item">BLOG</a>
+            <a href="#works" class="nav-item">WORKS</a>
+            <a href="#contact" class="nav-item">INFO</a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Part1 Desk Scene -->
+    <section class="scene1">
+        <div class="scene1-canvas">
+        <img src="Img/1.png" alt="" class="scene1-bg">
+    <!--Kitty with Tracking Eyes-->
+    <div class="character">
+
+        <div class="eyeL">
+            <img src="Img/eyeblack-L.png" class="pupil">
+        </div>
+
+        <div class="eyeR">
+            <img src="Img/eyeblack-L.png" class="pupil">
+        </div>
+
+        <img src="Img/kitty.png" class="kitty">
+    </div>
+
+
+    <!-- My Illustration with frame -->
+    <div class="frame">
+        <div class="slider">
+            <div class="slides">
+                <img class="slideImg" src="Img/Commercial (2).png" alt="Illustration #1">
+                <img class="slideImg" src="Img/Commercial (1).gif" alt="Illustration #2">
+                <img class="slideImg" src="Img/Commercial (3).gif" alt="Illustration #3">
+                <img class="slideImg" src="Img/Commercial (4).gif" alt="Illustration #4">
+                <img class="slideImg" src="Img/Commercial (5).gif" alt="Illustration #5">
+            </div>
+            <button class="prev" onclick="prevSlide()">◀</button>
+            <button class="next" onclick="nextSlide()">▶</button>
+        </div>
+    </div>
+    <a id="illustLink" href="">
+    
+    </a>
+    <!--<p>Artwork</p>-->
+
+    <!--other stuffs-->
+    <a href="blog.html">
+        <img src="Img/notebook.png" alt="notebook" class="notebook">
+    </a>
+    <div class="stack">
+        <img src="Img/phone.png" alt="telephone" class="telephone">
+        <img src="Img/mm.gif" alt="screen" class="under">
+    </div>
+
+    <!-- kitty-->
+    <div class="taiyaki" onclick="talk()">
+        <img src="Img/cat_talk.png" class="taiyaki_kitty">
+        <img src="Img/pen.png" class="pen">
+        <div class="talk show" id="bubble">
+            <span id="text-content"></span>
+        </div>
+    </div>
+
+    <!--Digital clock-->
+    <img src="Img/clock.png" alt="clock" class="clock-face">
+    <div class="container">
+        <div class="clock">
+            <div class="clock glow">
+            <span id="hrs">00</span>
+            <span class="colon">:</span>
+            <span id="min">00</span>
+            <span class="colon">:</span>
+            <span id="sec">00</span>
+            </div>
+
+            <div class="ghost">
+            <span>88</span>
+            <span class="colon"></span>
+            <span>88</span>
+            <span class="colon"></span>
+            <span>88</span>
+            </div>
+        </div>  
+    </div>
+    </div>
+    </section>
+
+<div class="scrolling-cat-path">
+    <div class="cat-fixed-wrapper">
+        <img src="Img/cat_frame1.png" id="slidingCat" alt="scrolling cat">
+    </div>
+</div>
+
+
+    <!--Part2 skills-->
+    <section class="room">
+        <img src="Img/p2.png" class="p2bg">
+        
+        <div class="sticker-wall">
+            <div class="sticker" style="--hover-bg: #efb044; --hover-color: #fff;">
+                <pre class="normal">
+ /╲_/╲
+( •ω• ) 
+ (_____)/
+PIXEL ART</pre>
+                <pre class="action">
+ |╲_/|
+( -ω- )
+<(_____) 
+PIXEL ART</pre>
+            </div>
+
+            <div class="sticker" style="--hover-bg: #3b82f6; --hover-color: #fff;">
+                <pre class="normal">
+  _______
+ /      /|
++------+ |
+|PACK  | |
+|DESIGN|/
++------+</pre>
+                <pre class="action">
+    ______
+   /////// 
+ //╲/╲///|
++------+ |
+| o o  | |
+|      |/
++------+</pre>
+            </div>
+
+            <div class="sticker" style="--hover-bg: #c6e97f; --hover-color: #fff;">
+                <pre class="normal">
+   _( )_     _____
+ _|    _|  _|     |_
+(_ ART(_  (_COLLAB _)
+  |_____|   |_  __|
+              ( )</pre>
+                <pre class="action">
+     _( )_____
+   _|     |  ✧|_    
+  (_ ART COLLAB_)
+    |*____|_ _|
+           ( )</pre>
+            </div>
+
+            <div class="sticker" style="--hover-bg: #ff80d7; --hover-color: #fff;">
+                <pre class="normal">
++--------+
+|GRAPHIC |
+|   /    |
+|  DESIGN|
++--------+</pre>
+                <pre class="action">
++--------+
+|WEB |IMG|
++----+---+
+|TYPO| |/
++------ </pre>
+            </div>
+        </div>
+
+        <div class="weave-wall">
+            <div class="wall-bg"></div>
+        </div>
+        <div class="skill-container">
+            <div id="skillCode"></div>
+        </div>
+    </section>
+    
+    <script src="z.js"></script>
+</body>
+</html>
