@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="guest.css">
+    <title>Cat Guestbook</title>
+</head>
+<body>
+  <a href="index.html" class="back">← Back to Desk</a>
+
+  <main class="park-page">
+    <section class="park-scene">
+      <div class="park-header">
+        <h1 class="park-title">☆✧*｡⊹ Park ⊹｡*✧☆</h1>
+        <p class="park-subtitle">Leave a meowssage • ω •！</p>
+      </div>
+
+      <div id="catBox"></div>
+
+      <button id="openBtn" class="open-btn">Draw a Cat</button>
+      
+      <section id="panel" class="draw-panel hidden">
+        <div class="panel-inner">
+          <h2>Leave a cat  • ω •</h2>
+
+          <div class="canvas-area">
+            <canvas id="canvas" width="300" height="300"></canvas>
+            <button id="clearBtn" class="clear-btn">clear</button>
+          </div>
+
+          <form id="form">
+            <input type="text" id="name" placeholder="name" maxlength="10" required>
+            <textarea id="message" placeholder="say something..." maxlength="35" required></textarea>
+            <button type="submit">Send to Park</button>
+          </form>
+          
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="guest.js"></script>
+</body>
+</html>
