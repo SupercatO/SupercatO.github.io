@@ -9,6 +9,10 @@ body {
   color:#3c7de4;
 }
 
+canvas {
+  touch-action: none;
+}
+
 /* =============================
  　　　 Basic title & Btn
 ================================ */
