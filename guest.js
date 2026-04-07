@@ -51,6 +51,10 @@ canvas.addEventListener("pointerleave", () => {
   drawing = false;
 });
 
+canvas {
+  touch-action: none;
+}
+
 //Clear the entire canvas
 clearBtn.addEventListener("click", () => {
   drawArea.clearRect(0, 0, canvas.width, canvas.height);
