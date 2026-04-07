@@ -116,6 +116,20 @@ function cutEmptySpace(oldCanvas) {
   return newCanvas;
 }
 
+function canvasToPngFile(sourceCanvas) {
+  return new Promise((resolve, reject) => {
+    sourceCanvas.toBlob((result) => {
+      if (!result) {
+        reject(new Error("Could not create image file."));
+        return;
+      }
+      resolve(result);
+    }, "image/png");
+  });
+}
+
+
+
 // Put all cats in right place
 function putCatInPlace(catCard) {
   const scene = document.querySelector(".park-scene");
@@ -153,36 +167,118 @@ function putCatInPlace(catCard) {
   catCard.style.visibility = "visible";
 }
 
+function getCatImageUrl(catPath) {
+  const { data } = sb.storage
+    .from("cat-images")
+    .getPublicUrl(catPath);
 
-// Submit the cat and clear form
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value.trim();
-  const message = document.getElementById("message").value.trim();
-  if (!name || !message) return;
-
-  const newCanvas = cutEmptySpace(canvas);
-  if (!newCanvas) return; 
-
-  const catImage = newCanvas.toDataURL("image/png");
-
+  return data.publicUrl;
+}
+function makeCatCard(name, message, imageUrl) {
   const catCard = document.createElement("div");
   catCard.className = "cat-card";
 
   catCard.innerHTML = `
     <div class="cat-wrap">
       <div class="cat-bubble">
-        <span class="cat-text">${message}</span>
+        <span class="cat-text"></span>
         <div class="cat-line"></div>
       </div>
-      <img src="${catImage}" alt="cat drawing" class="cat-image">
+      <img src="" alt="cat drawing" class="cat-image">
     </div>
-    <p class="cat-name">${name}</p>
+    <p class="cat-name"></p>
   `;
-  putCatInPlace(catCard);
 
-  form.reset();
-  drawArea.clearRect(0, 0, canvas.width, canvas.height);
-  panel.classList.add("hidden");
+  catCard.querySelector(".cat-text").textContent = message;
+  catCard.querySelector(".cat-image").src = imageUrl;
+  catCard.querySelector(".cat-name").textContent = name;
+
+  return catCard;
+}
+
+async function loadCats() {
+  const { data, error } = await sb
+    .from("cats_messages")
+    .select("*")
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    console.error("load failed:", error);
+    return;
+  }
+
+  catBox.innerHTML = "";
+
+  data.forEach((cat) => {
+    const imageUrl = getCatImageUrl(cat.cat_path);
+    const catCard = makeCatCard(cat.name, cat.message, imageUrl);
+    putCatInPlace(catCard);
+  });
+}
+// Submit the cat and clear form
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !message) {
+    alert("Please write your name and message.");
+    return;
+  }
+
+  const newCanvas = cutEmptySpace(canvas);
+
+  if (!newCanvas) {
+    alert("Please draw a cat first.");
+    return;
+  }
+
+  try {
+    const catFile = await canvasToPngFile(newCanvas);
+
+    const filePath = `cats/${Date.now()}-${crypto.randomUUID()}.png`;
+
+    const { error: uploadError } = await sb.storage
+      .from("cat-images")
+      .upload(filePath, catFile, {
+        contentType: "image/png",
+        upsert: false
+      });
+
+    if (uploadError) {
+      console.error("upload failed:", uploadError);
+      alert("Upload failed");
+      return;
+    }
+
+    const { error: insertError } = await sb
+      .from("cats_messages")
+      .insert([
+        {
+          name: name,
+          message: message,
+          cat_path: filePath
+        }
+      ]);
+
+    if (insertError) {
+      console.error("save failed:", insertError);
+      alert("Save failed");
+      return;
+    }
+
+    const imageUrl = getCatImageUrl(filePath);
+    const catCard = makeCatCard(name, message, imageUrl);
+    putCatInPlace(catCard);
+
+    form.reset();
+    drawArea.clearRect(0, 0, canvas.width, canvas.height);
+    panel.classList.add("hidden");
+  } catch (error) {
+    console.error("unexpected error:", error);
+    alert("Something went wrong...");
+  }
 });
+
+loadCats();
