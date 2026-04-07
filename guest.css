@@ -9,10 +9,6 @@ body {
   color:#3c7de4;
 }
 
-canvas {
-  touch-action: none;
-}
-
 /* =============================
  　　　 Basic title & Btn
 ================================ */
@@ -231,6 +227,7 @@ canvas {
   background: white;
   margin-bottom: 12px;
   image-rendering: pixelated;
+  touch-action: none;
 }
 
 form {
