@@ -1,4 +1,4 @@
-const SUPABASE_URL = "https://supercato.github.io/";
+const SUPABASE_URL = "https://wmpzzufmkfjxjxqwcodv.supabase.co";
 const SUPABASE_KEY = "sb_publishable_iyYaRHNo37vupFJxbOi9TQ_JKdzCmNc";
 
 const supabase = window.supabase.createClient(
