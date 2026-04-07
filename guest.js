@@ -29,8 +29,6 @@ drawArea.lineCap = "butt";
 drawArea.lineJoin = "miter";
 
 // Draw while the mouse moves
-let drawing = false;
-
 canvas.addEventListener("pointerdown", (e) => {
   drawing = true;
   drawArea.beginPath();
@@ -51,9 +49,6 @@ canvas.addEventListener("pointerleave", () => {
   drawing = false;
 });
 
-canvas {
-  touch-action: none;
-}
 
 //Clear the entire canvas
 clearBtn.addEventListener("click", () => {
@@ -254,7 +249,7 @@ form.addEventListener("submit", async (e) => {
 
     if (uploadError) {
       console.error("upload failed:", uploadError);
-      alert("Upload failed");
+      alert(uploadError.message || JSON.stringify(uploadError));
       return;
     }
 
@@ -270,7 +265,7 @@ form.addEventListener("submit", async (e) => {
 
     if (insertError) {
       console.error("save failed:", insertError);
-      alert("Save failed");
+      alert(insertError.message || JSON.stringify(insertError));
       return;
     }
 
