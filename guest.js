@@ -29,23 +29,25 @@ drawArea.lineCap = "butt";
 drawArea.lineJoin = "miter";
 
 // Draw while the mouse moves
-canvas.addEventListener("mousedown", (e) => {
+let drawing = false;
+
+canvas.addEventListener("pointerdown", (e) => {
   drawing = true;
   drawArea.beginPath();
   drawArea.moveTo(e.offsetX, e.offsetY);
 });
 
-canvas.addEventListener("mousemove", (e) => {
+canvas.addEventListener("pointermove", (e) => {
   if (!drawing) return;
   drawArea.lineTo(e.offsetX, e.offsetY);
   drawArea.stroke();
 });
 
-canvas.addEventListener("mouseup", () => {
+canvas.addEventListener("pointerup", () => {
   drawing = false;
 });
 
-canvas.addEventListener("mouseleave", () => {
+canvas.addEventListener("pointerleave", () => {
   drawing = false;
 });
 
