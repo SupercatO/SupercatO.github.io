@@ -19,7 +19,8 @@ body {
 .park-scene {
   position: relative;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 
   background-image: url("Img/park.jpg");
   background-size: cover;
