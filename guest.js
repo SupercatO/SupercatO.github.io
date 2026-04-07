@@ -166,6 +166,8 @@ function putCatInPlace(catCard) {
   catCard.style.left = `${x}px`;
   catCard.style.top = `${y}px`;
   catCard.style.visibility = "visible";
+  const neededHeight = y + cardHeight + 80;
+  scene.style.minHeight = `${Math.max(window.innerHeight, neededHeight)}px`;
 }
 
 function getCatImageUrl(catPath) {
