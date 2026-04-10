@@ -147,7 +147,7 @@ function putCatInPlace(catCard) {
 // Layout settings
   const startX = 45;
   const startY = 150;
-  const gapX = 30;
+  const gapX = 28;
   const gapY = 40;
   const cardWidth = 120;
   const cardHeight = 180;
